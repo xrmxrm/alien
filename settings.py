@@ -15,4 +15,5 @@ class Settings:
         self.bullet_speed = 2.0
         self.bullet_width = 3  # pixels
         self.bullet_height = 15  # pixels
-        self.bullet_color = (60, 60, 60)  # dark gray        
+        self.bullet_color = (60, 60, 60)  # dark gray 
+        self.bullets_allowed = 3  # Encourage accuracy       
