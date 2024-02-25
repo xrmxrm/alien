@@ -15,14 +15,11 @@ class AlienInvasion:
 
         self.screen = pygame.display.set_mode((
             self.settings.screen_width,
-            self.settings.screen_height)
-        )
+            self.settings.screen_height))
+        
         pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
-
-        # Set the background color.
-        self.bg_color = (230, 230, 230)
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -42,7 +39,6 @@ class AlienInvasion:
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
         pygame.display.flip()
-
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
