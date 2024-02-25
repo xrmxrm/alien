@@ -1,6 +1,6 @@
 This project is based on the *Python Crash Course* book. It uses the Pygame framework.
 
-The `alien_invasion.py` file is the file to run to play Alien Invasion. It imports code from the other files, `settings.py` and `ship.py`.
+Run the `alien_invasion.py` file to play Alien Invasion. It imports code from  `settings.py` and `ship.py`.
 
 In Alien Invasion, you control a rocket ship that appears at the bottom center of the screen. You can move the ship right and left using the arrow keys and shoot bullets using the spacebar. When the game begins, a fleet of aliens fills the sky and moves across and down the screen. You shoot and destroy the aliens. If you destroy all the aliens, a new fleet appears and moves faster than the previous fleet. If any alien hits the ship or reaches the bottom of the screen, you lose a ship. If you lose three ships, the game ends.
 
