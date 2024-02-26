@@ -11,10 +11,10 @@ from bullet import Bullet
 from alien import Alien
 
 class AlienInvasion:
-    """Overall class to manage game assets and behavior."""
+    """Represent game assets and behavior"""
 
     def __init__(self):
-        """Initialize the game, and create game resources."""
+        """Initialize game, create game resources"""
         pygame.init()
         self.clock = pygame.time.Clock()
         self.settings = Settings()
@@ -44,7 +44,7 @@ class AlienInvasion:
         self.play_button = Button(self, "Play")
 
     def run_game(self):
-        """Main loop for the game."""
+        """Main loop."""
         while True:
             self._check_events()
             if self.game_active:
@@ -55,7 +55,7 @@ class AlienInvasion:
             self.clock.tick(60)
 
     def _check_events(self):
-        """Respond to keypresses and mouse events."""
+        """Respond to keypresses and mouse events"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -70,7 +70,7 @@ class AlienInvasion:
                 self._check_play_button(mouse_pos) 
 
     def _check_play_button(self, mouse_pos):
-        """Start a new game when the player clicks Play"""
+        """Start new game when  player clicks Play"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
             self._start_game()
@@ -201,7 +201,7 @@ class AlienInvasion:
         if self.stats.ships_left > 0:
             self.stats.ships_left -= 1
             self.sb.prep_ships()
-            
+
             self.bullets.empty()
             self.aliens.empty()
 
