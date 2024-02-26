@@ -200,6 +200,8 @@ class AlienInvasion:
         """Ship hit -- clear bullets & aliens. Start again or die"""
         if self.stats.ships_left > 0:
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
+            
             self.bullets.empty()
             self.aliens.empty()
 
@@ -217,6 +219,7 @@ class AlienInvasion:
         self.stats.reset_stats()  # Reset game stats
         self.sb.prep_score()
         self.sb.prep_level()
+        self.sb.prep_ships()
         self.game_active = True
 
         self.settings.initialize_dynamic_settings()  # Reset level
