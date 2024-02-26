@@ -1,5 +1,5 @@
 # Introduction
-This project is based on the *Python Crash Course* book. It uses the Pygame package.
+This project is based on the *Python Crash Course* book, third edition, from No Starch Press. It uses the Pygame package.
 
 Run the `alien_invasion.py` file to play Alien Invasion.
 
