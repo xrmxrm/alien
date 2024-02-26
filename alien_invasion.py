@@ -4,6 +4,7 @@ import pygame
 
 from settings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 from ship import Ship
 from bullet import Bullet
@@ -26,14 +27,19 @@ class AlienInvasion:
         # self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien Invasion")
 
+        # Stats
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
 
+        # Ship
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
 
+        # Aliens
         self.aliens = pygame.sprite.Group()
         self._create_fleet()
 
+        # Game status
         self.game_active = False  # Let player decide when to start
         self.play_button = Button(self, "Play")
 
@@ -110,8 +116,13 @@ class AlienInvasion:
 
     def _check_bullet_alien_collisions(self):
         # If bullet hits alien, delete both
-        _ = pygame.sprite.groupcollide(
+        collisions = pygame.sprite.groupcollide(
                 self.bullets, self.aliens, True, True)
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            self.sb.prep_score()
+            self.sb.check_high_score()
         
         # If all aliens shot down
         if not self.aliens:
@@ -119,7 +130,11 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
-                
+
+            # Level up
+            self.stats.level += 1
+            self.sb.prep_level()
+            
     def _update_aliens(self):
         """Update entire alien fleet -- turn and drop at edge"""
         self._check_fleet_edges()
@@ -200,6 +215,8 @@ class AlienInvasion:
 
     def _start_game(self):
         self.stats.reset_stats()  # Reset game stats
+        self.sb.prep_score()
+        self.sb.prep_level()
         self.game_active = True
 
         self.settings.initialize_dynamic_settings()  # Reset level
@@ -222,6 +239,8 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.ship.blitme()
         self.aliens.draw(self.screen)
+
+        self.sb.show_score()  # Scoreboard
 
         if not self.game_active:
             self.play_button.draw_button()
