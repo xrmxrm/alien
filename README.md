@@ -16,6 +16,8 @@ The `AlienInvasion` class also contains the main loop of the game. It calls `_ch
 
 The `_check_events` method detects relevant events, such as keypresses and releases, and processes each of these types of events through the methods `_check_keydown`_events and `_check_keyup_events`. These methods manage the ship’s movement. The AlienInvasion class also contains `_update_screen`, which redraws the screen on each pass through the main loop.
 
+This file contains a lot of code relating to bullets and to alien fleets.
+
 ## settings.py
 
 The `settings.py` file contains the `Settings` class, which initializes attributes controlling the game's appearance, ship speed, and bullet characteristics.
@@ -27,3 +29,11 @@ The `ship.py` file contains the `Ship` class. Its `update` method manages the sh
 ## bullet.py
 
 The `bullet.py` file contains the `Bullet` class, which inherits from `Sprite` (from `pygame.sprite`). Sprites enable you to group related elements and act on all the grouped elements at once. Bullets are Pygame rectangles -- they do not have an associated bitmap image. 
+
+## alien.py
+
+The alien.py file contains the Alien class, which, like bullet.py, inherits from Sprite. Like bullets, aliens are processed in a group.
+
+## images
+
+The images directory contains the bitmap images of the player's ship and the aliens.
