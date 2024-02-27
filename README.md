@@ -1,17 +1,26 @@
 # Introduction
-This project is based on the *Python Crash Course* book, third edition, from No Starch Press. It uses the Pygame package.
+This project is based on  *Python Crash Course* by Eric Matthes, third edition, from No Starch Press.
 
-Run the `alien_invasion.py` file to play Alien Invasion.
+Run the `alien_invasion.py` file to play Alien Invasion. Press the Play button on the screen that appears (or press the P key) to start.
 
-In Alien Invasion, you control a rocket ship that appears at the bottom center of the screen. You can move the ship right and left using the arrow keys and shoot bullets using the spacebar. When the game begins, a fleet of aliens fills the sky and moves across and down the screen. You shoot and destroy the aliens. If you destroy all the aliens, a new fleet appears and moves faster than the previous fleet. If any alien hits the ship or reaches the bottom of the screen, you lose a ship. If you lose three ships, the game ends.
+You control a rocket ship that appears at the bottom center of the screen. When the game begins, a fleet of aliens fills the screen above your ship. The fleet moves horizontally across the screen. It changes direction and moves downward if any alien reaches an edge.
+
+You use arrow keys and the spacebar to move horizontally and shoot bullets. Hitting an alien with a bullet destroys the alien. The game gives you points for each alien you shoot down. If you wipe out an entire fleet, you level up: the next fleet moves faster, and shooting down an alien is worth more points. 
+
+If any alien hits your ship or reaches the bottom of the screen, you lose a ship (that is, you die). You return to level 1, but you keep your score. A new fleet appears, moving at the original speed, and you get a new ship. If you lose 3 times, the Play button appears. You can press it to play again, at which point your score reverts to 0, but the high score remains. If you type the Q key or close the window, the program exits.
+
+A screen graphic shows as many ship images as you have lives left. The screen also shows your level and score and your highest score since you started the program. If you exit the program, the high score reverts to 0 next time you start.
 
 # Details
-This package relies on the following.
+The Python implementation uses the Pygame package. Its Sprite class enables groups of similar items (like aliens or bullets) to be processed efficiently.
+
+The `AlienInvasion` class (in `alien_invasion.py`) contains the main loop, which checks for and processes keyboard, mouse, and clock events, then updates the game model (really just a bunch of values stored in various classes) and the screen display.
 
 ## Scoring
-The `gamestats.py` file  contains the `GameStats` class, which maintains game statistics. The `scoreboard.py` file contains the `Scoreboard` class which displays them. 
+The `gamestats.py` file  contains the `GameStats` class, which maintains game statistics. The `scoreboard.py` file contains the `Scoreboard` class which displays them. The program converts numbers to screen images to be updated every time the display is redrawn. 
 
-The game assigns points to each alien you shoot down. If you wipe out an entire fleet, you level up: the next fleet moves faster, and shooting down an alien is worth more points. These changes depend on values in the `Settings` class, defined in the `settings.py` file.
+## Game mechanics
+These changes depend on values in the `Settings` class, defined in the `settings.py` file.
 
 The game displays your score and level, the number of lives (ships) you have left, and the high score. If the game ends, you can press the Play button (or the P key) to play another. The high score continues from one play to the next, until you quit the game (type Q or close the window).
 
