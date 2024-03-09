@@ -12,7 +12,7 @@ If any alien hits your ship or reaches the bottom of the screen, you lose a ship
 A screen graphic shows as many ship images as you have lives left. The screen also shows your level and score and your highest score since you started the program. If you exit the program, the high score reverts to 0 next time you start.
 
 # Details
-The Python implementation uses the Pygame package. Its Sprite class enables groups of similar items (like aliens or bullets) to be processed efficiently.
+The Python implementation uses the Pygame package (`pip install pygame`). Its Sprite class enables you to apply the same command to each member of a group of similar items (like aliens or bullets).
 
 The `AlienInvasion` class (in `alien_invasion.py`) contains the main loop, which checks for and processes keyboard, mouse, and clock events, then updates the game model (really just a bunch of values stored in various classes) and the screen display.
 
